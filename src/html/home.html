@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio
+    </title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: "Inconsolata", monospace;
+
+        }
+
+        .hd-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            /* 다른 요소 위에 오도록 */
+            background-color: #ffffff;
+            /* 배경 없으면 아래가 비쳐 보임 */
+            border-bottom: solid #CBCBCB 1px;
+        }
+
+        .folio-hd {
+            margin: 0 auto;
+            height: 3.125vw;
+            max-width: 50vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        .hd-imgbx img {
+            height: 1.563vw;
+        }
+
+        .hd-menu {
+            display: flex;
+            gap: 1.563vw;
+        }
+
+        .menu {
+            cursor: pointer;
+        }
+
+        .menu-nm {
+            color: #5F5F5F;
+            font-size: 0.9375vw;
+
+        }
+
+        .first-sec {
+            background-color: #FFFFFF;
+        }
+
+        .firstsec-content {
+            max-width: 50vw;
+            /* 960px */
+            margin: 0 auto;
+            padding-top: 7vw;
+            /* 80px */
+            padding-bottom: 4.1667vw;
+        }
+
+        .profile-bx {
+            position: relative;
+            width: 7.8125vw;
+            /* 150px */
+            height: 7.8125vw;
+            border-radius: 50%;
+            background-image: url("../assets/profile-ic.svg");
+            background-size: cover;
+            /* border: solid #E2656E 0.2604vw; */
+            /* 5px */
+            margin: 0 auto;
+            margin-bottom: 2.8646vw;
+            /* 55px */
+        }
+
+
+
+        .profile-tt {
+            margin-bottom: 2.6458vw;
+            /* 70px */
+        }
+
+        .pr-tt {
+            color: #0C0C0C;
+            font-size: 0.9375vw;
+            /* 18px */
+            text-align: center;
+        }
+
+        .hello-tt {
+            margin-bottom: 2.3646vw;
+            text-shadow: 2px 2px 4px #CBCBCB;
+        }
+
+        .mynm {
+            font-size: 1.6667vw;
+            /* 32px */
+            font-weight: bold;
+            margin-bottom: 1.8021vw;
+            /* 25px */
+        }
+
+        .subtt {
+            margin-bottom: 0.2604vw;
+            color: #5F5F5F;
+            /* 5px */
+        }
+
+        .profile-skills {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.0417vw;
+            /* 20px */
+            margin-bottom: 6.6458vw;
+        }
+
+        .profile-row {
+            display: flex;
+            flex-direction: row;
+            gap: 0.7813vw;
+            /* 15px */
+            justify-content: center;
+        }
+
+        .dt-profile-row {
+            display: flex;
+            flex-direction: row;
+            gap: 0.7813vw;
+            /* 15px */
+            justify-content: start;
+        }
+
+        .skill-bx {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.4167vw;
+            /* 8px */
+            padding: 0.3688vw 0.7333vw;
+            /* 9px 16px */
+            background-color: #F1F1F1;
+            border-radius: 1.3021vw;
+            /* 25px */
+        }
+
+        .dt-skill-bx {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.4167vw;
+            /* 8px */
+            padding: 0.3688vw 0.7333vw;
+            /* 9px 16px */
+            background-color: #F1F1F1;
+            border-radius: 1.3021vw;
+            /* 25px */
+        }
+
+        .skill-bx img,
+        .playstore {
+            width: 1.25vw;
+            /* 24px 기준 */
+            height: 1.25vw;
+        }
+
+        .dt-skill-bx img {
+            width: 0.781vw;
+            /* 24px 기준 */
+            height: 0.781vw;
+        }
+
+        .skill-nm,
+        .second-tt p,
+        .third-tt p {
+            font-family: "Inconsolata", monospace;
+            font-weight: lighter;
+            color: #5F5F5F;
+            font-size: 0.7375vw;
+            /* 18px */
+            text-align: center;
+        }
+
+        .dt-skill-nm {
+            font-family: "Inconsolata", monospace;
+            font-weight: lighter;
+            color: #5F5F5F;
+            font-size: 0.6375vw;
+        }
+
+        .dt-row-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5vw;
+        }
+
+        .below-bx {
+            display: flex;
+            justify-content: center;
+        }
+
+        .secondsec-content,
+        .thirdsec-content {
+            max-width: 50vw;
+            /* 960px */
+            margin: 0 auto;
+            padding-top: 3.8667vw;
+            /* 80px */
+            padding-bottom: 4.1667vw;
+
+
+        }
+
+        .second-tt,
+        .third-tt {
+            background-color: #F1F1F1;
+            padding: 0.3688vw 0;
+            width: 5.208vw;
+            border-radius: 1.3021vw;
+            margin: 0 auto;
+        }
+
+        .timeline-tot-bx {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            gap: 0.26vw;
+            margin-top: 6.084vw;
+        }
+
+        .tot-year {
+            font-size: 0.833vw;
+            color: #000;
+            font-weight: bolder;
+        }
+
+        .timeline-noti {
+            font-size: 0.833vw;
+            color: #7A7A7A;
+            font-weight: 500;
+        }
+
+        .timeline {
+            position: relative;
+            width: 50vw;
+            margin: 2vw auto;
+            padding: 0;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 2vw;
+            top: 0;
+            width: 0.104vw;
+            /* 약 2px */
+            height: 100%;
+            background-color: #F1F1F1;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 4vw;
+            padding-bottom: 3vw;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 2vw;
+            top: 1vw;
+            width: 1vw;
+            height: 1vw;
+            background-color: #F1F1F1;
+            border-radius: 50%;
+            transform: translate(-50%, 0);
+            /* 선의 중심에 정확히 꽂힘 */
+        }
+
+        .timeline-content {
+            padding-left: 1vw;
+        }
+
+        .timeline-date {
+            font-size: 0.83vw;
+            margin-bottom: 0.4vw;
+        }
+
+        .timeline-title {
+            font-size: 1.25vw;
+            font-weight: bold;
+            margin-bottom: 0.4vw;
+        }
+
+        .timeline-subtitle {
+            font-size: 0.94vw;
+        }
+
+        .third-tt {
+            margin-bottom: 6.084vw;
+        }
+
+        .third-content {
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5vw;
+
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            gap: 0.781vw;
+            box-shadow: 0.5vw 0.5vw 0.7vw #F1F1F1;
+            border-radius: 0.625vw;
+        }
+
+        .content-bx {
+            box-shadow: 0.5vw 0.5vw 0.8vw #F1F1F1;
+            overflow: hidden;
+
+        }
+
+        .content-img,
+        .content-detailbx {
+            padding: 1.85vw;
+        }
+
+
+        .content-img {
+            background-color: #F9FAFB;
+        }
+
+        .content-img img {
+            max-width: 20vw;
+            border-radius: 0.625vw;
+            box-shadow: 0.5vw 0.5vw 0.8vw #F1F1F1;
+
+        }
+
+        .content-tt {
+            display: flex;
+            flex-direction: row;
+            gap: 0.821vw;
+            align-items: center;
+            margin-bottom: 1.1vw;
+
+        }
+
+        .content-title {
+            font-size: 1vw;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .detail {
+            font-family: "Inconsolata", monospace;
+            font-weight: lighter;
+            color: #5F5F5F;
+            font-size: 0.7375vw;
+            /* 18px */
+            line-height: 1.6;
+            /* 줄 간격 살짝 넓힘 */
+        }
+
+        .content-detail {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 75%;
+        }
+
+        .content-tt a {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hd-wrapper">
+        <div class="folio-hd">
+            <div class="hd-imgbx">
+                <img src="../assets/signature.png" alt="signature">
+            </div>
+            <div class="hd-menu">
+                <div class="menu">
+                    <p class="menu-nm">AboutMe</p>
+                </div>
+                <div class="menu">
+                    <p class="menu-nm">Career</p>
+                </div>
+                <div class="menu">
+                    <p class="menu-nm">Project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sec-wrapper">
+        <!-- 간단 자기소개 -->
+        <section class="first-sec">
+            <div class="firstsec-content">
+                <div class="profile-bx">
+                    <div class="code-bx">
+                    </div>
+                </div>
+
+                <div class="profile-tt">
+                    <p class="pr-tt hello-tt">
+                        Hello World!
+                    </p>
+                    <p class="pr-tt mynm">기술로 사람을 움직이는 풀스택 개발자, 현지은입니다.</p>
+                    <p class="pr-tt subtt">현실의 문제를 함께 고민하고, 팀과 협력해 의미 있는 결과를 만들어갑니다.</p>
+                    <p class="pr-tt subtt">기술을 통해 <strong>더 나은 세상과 사용자 경험</strong>을 실현하는 것이 저의 목표입니다.</p>
+                </div>
+
+                <div class="profile-skills">
+                    <div class="profile-row">
+                        <div class="skill-bx">
+                            <img src="../assets/Java.svg" alt="java">
+                            <span class="skill-nm">Java</span>
+                        </div>
+                        <div class="skill-bx">
+                            <img src="../assets/Flutter.svg" alt="flutter">
+                            <span class="skill-nm">Flutter</span>
+                        </div>
+                        <div class="skill-bx">
+                            <img src="../assets/Firebase.svg" alt="firebase">
+                            <span class="skill-nm">Firebase</span>
+                        </div>
+                        <div class="skill-bx">
+                            <img src="../assets/HTML5.svg" alt="flutter">
+                            <span class="skill-nm">HTML</span>
+                        </div>
+                        <div class="skill-bx">
+                            <img src="../assets/JavaScript.svg" alt="flutter">
+                            <span class="skill-nm">Javascript</span>
+                        </div>
+                        <div class="skill-bx">
+                            <img src="../assets/jQuery.svg" alt="flutter">
+                            <span class="skill-nm">jQuery</span>
+                        </div>
+                        <div class="skill-bx">
+                            <img src="../assets/CSS3.svg" alt="flutter">
+                            <span class="skill-nm">CSS</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-row">
+                        <div class="skill-bx">
+                            <img src="../assets/Oracle.svg" alt="oracle">
+                            <span class="skill-nm">Oracle</span>
+                        </div>
+                        <div class="skill-bx">
+                            <img src="../assets/Mysql.svg" alt="mysql">
+                            <span class="skill-nm">Mysql</span>
+                        </div>
+                        <div class="skill-bx">
+                            <img src="../assets/Linux.svg" alt="linux">
+                            <span class="skill-nm">Linux</span>
+                        </div>
+                        <div class="skill-bx">
+                            <img src="../assets/Apache Tomcat.svg" alt="tomcat">
+                            <span class="skill-nm">Apache Tomcat</span>
+                        </div>
+                        <div class="skill-bx">
+                            <img src="../assets/Apache Subversion.svg" alt="svn">
+                            <span class="skill-nm">SVN</span>
+                        </div>
+                        <div class="skill-bx">
+                            <img src="../assets/Docker.svg" alt="Docker">
+                            <span class="skill-nm">Docker</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-row">
+                        <div class="skill-bx">
+                            <img src="../assets/Eclipse IDE.svg" alt="eclipse">
+                            <span class="skill-nm">Eclipse</span>
+                        </div>
+                        <div class="skill-bx">
+                            <img src="../assets/Vscode.svg" alt="Vscode">
+                            <span class="skill-nm">Vscode</span>
+                        </div>
+                        <div class="skill-bx">
+                            <img src="../assets/Android Studio.svg" alt="Androidstudio">
+                            <span class="skill-nm">Android studio</span>
+                        </div>
+                        <div class="skill-bx">
+                            <img src="../assets/Xcode.svg" alt="Xcode">
+                            <span class="skill-nm">Xcode</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="below-bx">
+                    <img src="../assets/below-ic.svg" alt="below">
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 경력 소개 -->
+        <section class="second-sec">
+            <div class="secondsec-content">
+                <div class="second-tt">
+                    <p>Career</p>
+                </div>
+                <div class="timeline-tot-bx">
+                    <p class="tot-year"> 총 경력 2년 10개월</p>
+                    <p class="timeline-noti">
+                        * 개발과 무관한 경력은 제외
+                    </p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024.07 - 2025.03</div>
+                            <div class="timeline-title">(주)더리드페이먼츠</div>
+                            <div class="timeline-subtitle">연구개발팀  대리</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2022.05 - 2024.03</div>
+                            <div class="timeline-title">(주)핀투</div>
+                            <div class="timeline-subtitle">연구개발팀  사원</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2021.10 - 2022.05</div>
+                            <div class="timeline-title">(주)솔데스크 아카데미</div>
+                            <div class="timeline-subtitle">자바 & 파이썬 활용 통계기반 빅데이터 개발자과정 수료</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2011.03 - 2016.06</div>
+                            <div class="timeline-title">영산대학교</div>
+                            <div class="timeline-subtitle">호텔경영학 학사졸업</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- 진행 프로젝트 소개 -->
+        <section class="third-sec">
+            <div class="thirdsec-content">
+                <div class="third-tt">
+                    <p>Projects</p>
+                </div>
+                <div class="third-content">
+
+                    <div class="content-row">
+                        <div class="content-img">
+                            <img src="../assets/carei_web.svg" alt="project1">
+                        </div>
+                        <div class="content-detailbx">
+                            <div class="content-tt">
+                                <p class="content-title">
+                                    학원 출결관리 앱
+                                </p>
+                                <a
+                                    href="https://play.google.com/store/apps/details?id=com.theleadpay.icare_lite&pcampaignid=web_share">
+                                    <img src="../assets/playstore.svg" alt="playstore" class="playstore">
+                                </a>
+                            </div>
+                            <div class="content-detail">
+                                <p class="detail">
+                                    학생 등·하원시 지정된 출결번호를 입력하면 선생님의 휴대폰을 통해서 학부모의 휴대폰으로 알림문자를 전송하는 앱
+                                </p>
+                                <p class="detail role">
+                                    👉 담당 파트: 전체 UI 구현, FCM 설정 및 인입 처리, <br>
+                                    문자 전송 제어 로직, DB 모델링, 앱 배포
+                                </p>
+                                <div class="dt-profile-row">
+                                    <div class="dt-skill-bx">
+                                        <img src="../assets/Flutter.svg" alt="flutter">
+                                        <span class="dt-skill-nm">Flutter</span>
+                                    </div>
+                                    <div class="dt-skill-bx">
+                                        <img src="../assets/Firebase.svg" alt="Firebase">
+                                        <span class="dt-skill-nm">Firebase</span>
+                                    </div>
+                                    <div class="dt-skill-bx">
+                                        <img src="../assets/MySQL.svg" alt="mysql">
+                                        <span class="dt-skill-nm">Mysql</span>
+                                    </div>
+
+                                    <div class="dt-skill-bx">
+                                        <img src="../assets/Linux.svg" alt="linux">
+                                        <span class="dt-skill-nm">Linux</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-row">
+                        <div class="content-img">
+                            <img src="../assets/payment.png" alt="project2">
+                        </div>
+                        <div class="content-detailbx">
+                            <div class="content-tt">
+                                <p class="content-title">
+                                    자체 결제창 사이트
+                                </p>
+
+                            </div>
+                            <div class="content-detail">
+                                <p class="detail">
+                                    자체 솔루션의 PG결제를 위한 결제창
+                                </p>
+                                <p class="detail role">
+                                    👉 담당 파트: 전체 UI 구현, 신용카드 서비스 연동, <br>
+                                    가상계좌 서비스 연동, DB 모델링, 배포
+                                </p>
+                                <div class="dt-row-wrapper">
+                                    <div class="dt-profile-row">
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/Java.svg" alt="java">
+                                            <span class="dt-skill-nm">Java</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/HTML5.svg" alt="HTML">
+                                            <span class="dt-skill-nm">HTML</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/jQuery.svg" alt="jquery">
+                                            <span class="dt-skill-nm">Jquery</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/CSS3.svg" alt="CSS">
+                                            <span class="dt-skill-nm">CSS</span>
+                                        </div>
+                                    </div>
+                                    <div class="dt-profile-row">
+
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/MySQL.svg" alt="mysql">
+                                            <span class="dt-skill-nm">Mysql</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/Linux.svg" alt="linux">
+                                            <span class="dt-skill-nm">Linux</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/Apache Tomcat.svg" alt="Tomcat">
+                                            <span class="dt-skill-nm">Apache Tomcat</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-row">
+                        <div class="content-img">
+                            <img src="../assets/Billing.svg" alt="project3">
+                        </div>
+                        <div class="content-detailbx">
+                            <div class="content-tt">
+                                <p class="content-title">
+                                    자체 PG 정산 사이트
+                                </p>
+
+                            </div>
+                            <div class="content-detail">
+                                <p class="detail">
+                                    결제사, 대행사, 가맹점별 일일, 주별, 월별 정산금액 확인 사이트
+                                </p>
+                                <p class="detail role">
+                                    👉 담당 파트: 사이트 내 전체 UI및 API구현, DB 모델링, 배포
+                                </p>
+                                <div class="dt-row-wrapper">
+                                    <div class="dt-profile-row">
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/Java.svg" alt="flutter">
+                                            <span class="dt-skill-nm">Java</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/HTML5.svg" alt="HTML">
+                                            <span class="dt-skill-nm">HTML</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/jQuery.svg" alt="jquery">
+                                            <span class="dt-skill-nm">Jquery</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/CSS3.svg" alt="CSS">
+                                            <span class="dt-skill-nm">CSS</span>
+                                        </div>
+                                    </div>
+                                    <div class="dt-profile-row">
+
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/MySQL.svg" alt="mysql">
+                                            <span class="dt-skill-nm">Mysql</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/Linux.svg" alt="linux">
+                                            <span class="dt-skill-nm">Linux</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/Apache Tomcat.svg" alt="Tomcat">
+                                            <span class="dt-skill-nm">Apache Tomcat</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-row">
+                        <div class="content-img">
+                            <img src="../assets/golf.jpg" alt="project4">
+                        </div>
+                        <div class="content-detailbx">
+                            <div class="content-tt">
+                                <p class="content-title">
+                                    캐디피 정산 솔루션
+                                </p>
+
+                            </div>
+                            <div class="content-detail">
+                                <p class="detail">
+                                    PG결제를 통한 캐디피 정산 솔루션
+                                </p>
+                                <p class="detail role">
+                                    👉 담당 파트: 세금계산서, 원천징수 영수증 페이지 <br>반응형 UI 및 API구현, DB모델링
+                                </p>
+                                <div class="dt-row-wrapper">
+                                    <div class="dt-profile-row">
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/Java.svg" alt="flutter">
+                                            <span class="dt-skill-nm">Java</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/HTML5.svg" alt="HTML">
+                                            <span class="dt-skill-nm">HTML</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/jQuery.svg" alt="jquery">
+                                            <span class="dt-skill-nm">Jquery</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/CSS3.svg" alt="CSS">
+                                            <span class="dt-skill-nm">CSS</span>
+                                        </div>
+                                    </div>
+                                    <div class="dt-profile-row">
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/MySQL.svg" alt="mysql">
+                                            <span class="dt-skill-nm">Mysql</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/Linux.svg" alt="linux">
+                                            <span class="dt-skill-nm">Linux</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/Apache Tomcat.svg" alt="Tomcat">
+                                            <span class="dt-skill-nm">Apache Tomcat</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-row">
+                        <div class="content-img">
+                            <img src="../assets/yosul.png" alt="project5">
+                        </div>
+                        <div class="content-detailbx">
+                            <div class="content-tt">
+                                <p class="content-title">
+                                    YO술
+                                </p>
+                                <a href="https://apps.apple.com/kr/app/yo%EC%88%A0/id6449443630?platform=iphone">
+                                    <img src="../assets/appstore.svg" alt="appstore" class="playstore">
+                                </a>
+                            </div>
+                            <div class="content-detail">
+                                <p class="detail">
+                                    술에대한 정보를 제공하는 앱
+                                </p>
+                                <p class="detail role">
+                                    👉 담당 파트: 랜딩 및 메인페이지 UI 구현, 담당페이지 API 구현, FCM 설정 및 인입 처리,
+                                    DB 모델링, 앱 배포
+                                </p>
+                                <div class="dt-row-wrapper">
+                                    <div class="dt-profile-row">
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/Flutter.svg" alt="flutter">
+                                            <span class="dt-skill-nm">Flutter</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/Firebase.svg" alt="Firebase">
+                                            <span class="dt-skill-nm">Firebase</span>
+                                        </div>
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/Java.svg" alt="java">
+                                            <span class="dt-skill-nm">Java</span>
+                                        </div>
+
+                                        <div class="dt-skill-bx">
+                                            <img src="../assets/Mysql.svg" alt="mysql">
+                                            <span class="dt-skill-nm">Mysql</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dt-profile-row">
+                                    <div class="dt-skill-bx">
+                                        <img src="../assets/Linux.svg" alt="linux">
+                                        <span class="dt-skill-nm">Linux</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch('./footer.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        $(document).ready(function () {
+            $('.menu-nm').on('click', function () {
+                const text = $(this).text();
+
+                let targetSection;
+
+                if (text === 'AboutMe') targetSection = '.first-sec';
+                else if (text === 'Career') targetSection = '.second-sec';
+                else if (text === 'Project') targetSection = '.third-sec';
+
+                if (targetSection) {
+                    $('html, body').animate({
+                        scrollTop: $(targetSection).offset().top
+                    }, 600); // 600ms 동안 부드럽게 스크롤
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
